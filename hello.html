@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <meta charset="UTF-8">
+    <title>Hmmmm</title>
+</head>
+<body onload="docReady()">
+<div style="border: 1px solid black; height: 190px; width: 190px; background-color: white;">
+<img id="myImage" class="image" src="image/tank.png" height="19" width="19"/>
+</div>
+<table>
+  <tr>
+    <td>&nbsp;</td>
+    <td><button style="padding: 1px 15px;" onclick="moveUp()">Up</button></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><button style="padding: 1px 10px;" onclick="moveLeft()">Left</button></td>
+    <td>&nbsp;</td>
+    <td><button onclick="moveRight()">Right</button></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><button onclick="moveDown()">Down</button></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<script>
+    let image;
+    // image = document.getElementById('myImage');
+    function init() {
+        image = document.getElementById('myImage');
+        image.style.position = 'relative';
+        image.style.top = '0px'
+        image.style.left = '0px'
+    }
+    //
+    // window.onload = init; //Không thể onload window.onload vs body.onload cùng lúc
+    init();
+    // document.body.onload = docReady;
+    function moveDown() {
+        // image = document.getElementById('myImage');
+        image.style.top = parseInt(image.style.top) + 10 + 'px';
+    }
+
+    function moveUp() {
+        // image = document.getElementById('myImage');
+        image.style.top = parseInt(image.style.top) - 10 + 'px';
+    }
+
+    function moveRight() {
+        // image = document.getElementById('myImage');
+        image.style.left = parseInt(image.style.left) + 10 + 'px';
+    }
+
+    function moveLeft() {
+        // image = document.getElementById('myImage');
+        image.style.left = parseInt(image.style.left) - 10 + 'px';
+    }
+
+    function moveSelection(evt){
+        // console.log('goi ham select: EVT ---> ', evt)
+        // console.log('goi ham select', evt.keyCode)
+        switch (evt.keyCode) {
+            case 37:
+                moveLeft();
+                break;
+            case 39:
+                moveRight();
+                break;
+            case 38:
+                moveUp();
+                break;
+            case 40:
+                moveDown();
+                break;
+        }
+    }
+    function docReady() {
+        console.log('goi docReady')
+        window.addEventListener('keydown', moveSelection);
+        console.log('sau an phim')
+    }
+</script>
+</body>
+</html>
